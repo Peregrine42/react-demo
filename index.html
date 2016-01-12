@@ -16,19 +16,26 @@
 </div>
 
 <script src="jquery-1.12.0.js"></script>
+<script src="lib/index.js"></script>
 <script>
-$(document).ready(function(){
-  var targetColor = $('#inc').css('background-color')
-  $('#color').val(targetColor);
-})
-
-$('#color').on('keyup', function () {
-  $('#inc').css('background-color', this.value);
-})
-
 $('#inc').on('click', function () {
   var oldValue = $('#counter').html();
   var newValue = 1 + Number(oldValue);
   $('#counter').html(newValue);
+})
+
+$(document).ready(function() {
+  var targetColor = $('#inc').css('background-color')
+  $('#color').val(targetColor);
+  
+  var inverted = lightOrDark(targetColor);
+  $('#inc').css('color', inverted);
+})
+
+$('#color').on('keyup', function () {
+  $('#inc').css('background-color', this.value);
+  var newColor = $('#inc').css('background-color')
+  var inverted = lightOrDark(newColor);
+  $('#inc').css('color', inverted);
 })
 </script>
