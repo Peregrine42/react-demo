@@ -1,16 +1,25 @@
-<span id="colored-counter">0</span>
-<button id="inc"></button>
+<link rel="stylesheet" type="text/css" href="css/skeleton.css">
+<link rel="stylesheet" type="text/css" href="css/normalize.css">
+<link rel="stylesheet" type="text/css" href="css/index.css">
+
+<div>
+  <span id="counter" style="font-size: 40px;">0</span>
+</div>
+<div>
+  <input type="button" id="inc" value="inc"></input>
+</div>
+<hr>
 <input id="color"></input>
 
 <script src="jquery-1.12.0.js"></script>
 <script>
 $('#color').on('keyup', function () {
-    $('#colored-counter').css('color', this.value);
+    $('#inc').css('background-color', this.value);
 })
 
 $('#inc').on('click', function () {
-    var oldValue = $('#colored-counter').html();
+    var oldValue = $('#counter').html();
     var newValue = 1 + Number(oldValue);
-    $('#colored-counter').html(newValue);
+    $('#counter').html(newValue);
 })
 </script>

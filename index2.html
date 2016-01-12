@@ -1,0 +1,23 @@
+<span id="colored-counter">0</span>
+<input id="color"></input>
+<button id="inc"></button>
+
+<script src="jquery-1.12.0.js"></script>
+<script>
+var state = {color: '', value: 0};
+
+function updateUI() {
+  $('#colored-counter').css('color', state.color);
+  $('#colored-counter').html(state.value);
+}
+
+$('#color').on('keyup', function () {
+  state.color = this.value;
+  updateUI();
+})
+
+$('#inc').on('click', function () {
+  state.value++;
+  updateUI();
+})
+</script>
