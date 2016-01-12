@@ -1,0 +1,16 @@
+<span id="colored-counter">0</span>
+<button id="inc"></button>
+<input id="color"></input>
+
+<script src="jquery-1.12.0.js"></script>
+<script>
+$('#color').on('keyup', function () {
+    $('#colored-counter').css('color', this.value);
+})
+
+$('#inc').on('click', function () {
+    var oldValue = $('#colored-counter').html();
+    var newValue = 1 + Number(oldValue);
+    $('#colored-counter').html(newValue);
+})
+</script>
