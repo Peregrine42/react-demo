@@ -18,24 +18,31 @@
 <script src="jquery-1.12.0.js"></script>
 <script src="lib/index.js"></script>
 <script>
-$('#inc').on('click', function () {
-  var oldValue = $('#counter').html();
-  var newValue = 1 + Number(oldValue);
-  $('#counter').html(newValue);
-})
+var state = {}
 
-$(document).ready(function() {
-  var targetColor = $('#inc').css('background-color')
-  $('#color').val(targetColor);
+function render() {
+  $('#counter').html(state.value);
+  $('#color').val(state.color);
   
-  var inverted = lightOrDark(targetColor);
+  $('#inc').css('background-color', state.color);
+  var inverted = lightOrDark($('#inc').css('background-color'));
   $('#inc').css('color', inverted);
+}
+
+$('#inc').on('click', function () {
+  state.value++;
+  render();
 })
 
 $('#color').on('keyup', function () {
-  $('#inc').css('background-color', this.value);
-  var newColor = $('#inc').css('background-color')
-  var inverted = lightOrDark(newColor);
-  $('#inc').css('color', inverted);
+  state.color = this.value;
+  render();
 })
+
+$(document).ready(function() {
+  state.color = "#2200AA";
+  state.value = 0;
+  render();
+})
+
 </script>
