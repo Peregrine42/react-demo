@@ -1,6 +1,7 @@
-<link rel="stylesheet" type="text/css" href="css/theme.css">
-<link rel="stylesheet" type="text/css" href="css/index.css">
-
+<head>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
 <div class="container">
   <br/>
   <br/>
@@ -16,13 +17,18 @@
 
 <script src="jquery-1.12.0.js"></script>
 <script>
+$(document).ready(function(){
+  var targetColor = $('#inc').css('background-color')
+  $('#color').val(targetColor);
+})
+
 $('#color').on('keyup', function () {
-    $('#inc').css('background-color', this.value);
+  $('#inc').css('background-color', this.value);
 })
 
 $('#inc').on('click', function () {
-    var oldValue = $('#counter').html();
-    var newValue = 1 + Number(oldValue);
-    $('#counter').html(newValue);
+  var oldValue = $('#counter').html();
+  var newValue = 1 + Number(oldValue);
+  $('#counter').html(newValue);
 })
 </script>
